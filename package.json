@@ -1,0 +1,32 @@
+{
+	"name": "aebs",
+	"displayName": "AEBS - Another Electron Build Script",
+	"version": "1.0.0",
+	"description": "A helper utility for creating and publising Electron applications",
+	"main": "lib/index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/imburnis/aebs.git"
+	},
+	"bin": {
+		"aebs": "./bin/global.js"
+	},
+	"preferGlobal": true,
+	"keywords": [
+		"electron",
+		"creation",
+		"publishing"
+	],
+	"author": "Jacob Radatz <jradatz@rwstudios.net>",
+	"license": "GPL-3.0-or-later",
+	"dependencies": {
+		"asar": "^0.14.5",
+		"command-line-args": "^5.0.2",
+		"command-line-usage": "^5.0.5",
+		"decompress-zip": "^0.3.1",
+		"plist": "^3.0.1",
+		"png2icons": "^1.0.1",
+		"rcedit": "^1.1.1",
+		"semver": "^5.6.0"
+	}
+}
