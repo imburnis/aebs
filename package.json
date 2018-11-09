@@ -1,7 +1,7 @@
 {
 	"name": "aebs",
 	"displayName": "AEBS - Another Electron Build Script",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A helper utility for creating and publising Electron applications",
 	"main": "lib/index.js",
 	"repository": {

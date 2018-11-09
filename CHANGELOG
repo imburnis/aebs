@@ -1,2 +1,5 @@
+Version 1.0.1
+ - Resolved bug with the build script that would throw an error if the build directory
+   does not exist when not using the download cache for electron binaries
 Version 1.0.0
  - Initial verison of the project
