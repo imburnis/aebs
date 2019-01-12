@@ -37,6 +37,11 @@ const buildDefinitions = [
 	{ name: "cache", alias: "c", type: String }
 ];
 
+//The specific arguments for the download command
+const downloadDefinitions = [
+	{ name: "remote", alias: "r", type: String }
+]
+
 //A data driven command line help display
 const helpSections = [{
 	header: "Electron Utils",
@@ -49,12 +54,18 @@ const helpSections = [{
 		"asar\t\tGenerates an asar from the current Electron project",
 		"sassy\t\tSassifies the current electron project",
 		"create\tCreates a template electron project",
+		"download\tDownloads a template project into the source directory",
 		"help\t\tShow this help dialog"
 	]
 },{
 	header: "Build Parameters",
 	optionList: [
-		{ name: "cache", alias: "c", description: "An optional path to cache electron builds at"}
+		{ name: "cache", alias: "c", description: "An optional path to cache electron builds at" }
+	]
+}, {
+	header: "Download Parameters",
+	optionList: [
+		{ name: "remote", alias: "r", description: "The remote template to download into the project directory" }
 	]
 }];
 
@@ -66,7 +77,7 @@ console.log("This program comes with ABSOLUTELY NO WARRANTY.");
 console.log("This is free software, and you are welcome to redistribute it");
 console.log("under certain conditions.");
 
-try{
+try {
 	//Parse the first set of command line arguments
 	const mainOptions = commandLineArgs(mainDefinitions, { stopAtFirstUnknown: true });
 	//Store the remaining arguments in an array (if there are any)
@@ -94,6 +105,17 @@ try{
 		case "create":
 			//Call the create command in the Electron Utils Library
 			electronUtil.Create(process.cwd());
+		break;
+		case "download":
+			//Parse the build command line arguments
+			const downloadOptions = commandLineArgs(downloadDefinitions, { argv });
+
+			if(!downloadOptions.remote){
+				console.log(commandLineUsage(helpSections));
+			}else{
+				//Call the download command in the Electron Utils Library
+				electronUtil.DownloadTemplate(process.cwd(), downloadOptions.remote);
+			}
 		break;
 		case "help":
 		default:
